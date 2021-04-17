@@ -25,7 +25,7 @@ public:
 		pNext = pn;
 		pDown = pd;
 		if (!s)
-			str[0] = '\0';
+			str[0] = '\n';
 		else
 			strcpy_s(str, s);
 	}
@@ -157,7 +157,7 @@ public:
 		}
 	}
 
-	void Save(char* fn)
+	void Save(const char* fn)
 	{
 		ofstream osf;
 		osf.open(fn);
@@ -194,47 +194,37 @@ public:
 	{
 		TTextLink* pF = NULL, * pC = NULL;
 		char buff[80];
-		while (!ifs.eof())
+		while (ifs.eof() == false)
 		{
 			ifs.getline(buff, 80, '\n');
 			if (buff[0] == '}')
 				break;
 			else
-				if (!pC)
-				{
-					TTextLink* t = (TTextLink*)(TText::operator new(1));
-					strcpy_s(t->str, buff);
-					t->pDown = NULL;
-					t->pNext = NULL;
-					pF = t;
-					pC = pF;
-				}
-				else
-				{
-					TTextLink* t = (TTextLink*)(TText::operator new(1));
-					strcpy_s(t->str, buff);
-					t->pDown = NULL;
-					t->pNext = NULL;
-					pC->pNext = t;
-					pC = t;
-				}
-				/*if (buff[0] == '{')
+				if (buff[0] == '{')
 				{
 					pC->pDown = ReadRec(ifs);
 				}
 				else
 				{
-					TTextLink* tmp = new TTextLink(buff);
+					//TTextLink* tmp = new TTextLink(buff);
 					if (pC == NULL)
 					{
+						TTextLink* tmp = (TTextLink*)TTextLink::operator new(1);
+						strcpy_s(tmp->str, buff);
+						tmp->pDown = NULL;
+						tmp->pNext = NULL;
 						pF = pC = tmp;
 					}
 					else
 					{
+						TTextLink* tmp = (TTextLink*)TTextLink::operator new(1);
+						strcpy_s(tmp->str, buff);
+						tmp->pDown = NULL;
+						tmp->pNext = NULL;
 						pC->pNext = tmp;
 						pC = tmp;
 					}
-				}*/
+				}
 		}
 		return pF;
 	}
