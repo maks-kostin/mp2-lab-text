@@ -10,6 +10,7 @@ void main()
 	text.Read("manuscript.txt");
 	text.Print();
 	text.GoFirstLink();
+	text.GoDownLink();
 	while (exit != 0)
 	{
 		cout << "Print 0 to save changes in origin.txt and close the programm" << endl;
@@ -24,6 +25,7 @@ void main()
 		cout << "Print 9 to clean" << endl;
 		cout << "Print 10 to go first line" << endl;
 		cout << "Print 11 to print text" << endl;
+		cout << "Print 12 to print free" << endl;
 		cin >> exit;
 		if (exit == 0)
 		{
@@ -45,6 +47,7 @@ void main()
 			text.InsNextLine(line);
 			text.Print();
 			text.GoFirstLink();
+			text.GoDownLink();
 		}
 		if (exit == 4)
 		{
@@ -53,6 +56,7 @@ void main()
 			text.InsDownLine(line);
 			text.Print();
 			text.GoFirstLink();
+			text.GoDownLink();
 		}
 		if (exit == 5)
 		{
@@ -61,6 +65,7 @@ void main()
 			text.InsNextSection(line);
 			text.Print();
 			text.GoFirstLink();
+			text.GoDownLink();
 		}
 		if (exit == 6)
 		{
@@ -69,18 +74,21 @@ void main()
 			text.InsDownSection(line);
 			text.Print();
 			text.GoFirstLink();
+			text.GoDownLink();
 		}
 		if (exit == 7)
 		{
 			text.DelNextLine();
 			text.Print();
 			text.GoFirstLink();
+			text.GoDownLink();
 		}
 		if (exit == 8)
 		{
 			text.DelDownLine();
 			text.Print();
 			text.GoFirstLink();
+			text.GoDownLink();
 		}
 		if (exit == 9)
 		{
@@ -89,16 +97,18 @@ void main()
 		if (exit == 10)
 		{
 			text.GoFirstLink();
+			text.GoDownLink();
 		}
 		if (exit == 11)
 		{
 			text.Print();
 			text.GoFirstLink();
+			text.GoDownLink();
+		}
+		if (exit == 12)
+		{
+			TTextLink::PrintFree();
 		}
 
 	}
-
-	//TTextLink::PrintFree();
-	//TTextLink::Clean("E:\Data\CProjects\mp2-lab-text\Text\Text\manuscript.txt");
-	//TTextLink::PrintFree();
 }

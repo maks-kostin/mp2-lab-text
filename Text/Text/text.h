@@ -34,7 +34,6 @@ class TText
 	TTextLink* pFirst;
 	TTextLink* pCurr;
 	TStack<TTextLink*> st;
-	//static TMem mem;
 public:
 	void SetCurrFlagTrue()
 	{
